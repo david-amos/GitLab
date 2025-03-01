@@ -1,0 +1,51 @@
+/* Fullscreen Background with PNG, Gradient, and Static */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: 
+        linear-gradient(45deg, rgba(26, 26, 26, 0.5), rgba(68, 68, 68, 0.5), rgba(34, 34, 34, 0.5)), /* Semi-transparent gradient */
+        url("backgrund.png") center/cover no-repeat; /* PNG Background */
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Static Noise Overlay */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        repeating-linear-gradient(0deg, rgba(255, 0, 0, 0.1) 0px, rgba(166, 255, 0, 0.1) 2px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(90deg, rgba(38, 0, 255, 0.1) 0px, rgba(0, 255, 234, 0.1) 2px, transparent 2px, transparent 4px);
+    animation: staticNoise 0.35s infinite steps(4);
+    opacity: 0.6;
+}
+
+
+/* Static Noise Animation */
+@keyframes staticNoise {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: -3px -3px, 3px 3px, 0 0; }
+}
+
+/* Text Styling */
+h1, blockquote {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
